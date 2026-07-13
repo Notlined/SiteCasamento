@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroCouple from "@/assets/hero-couple.jpg";
 import lavenderSprig from "@/assets/lavender-sprig.jpg";
 import lavenderTexture from "@/assets/lavender-texture.jpg";
@@ -138,7 +138,38 @@ function Hero() {
   );
 }
 
+function formatCountdown(targetDate: Date) {
+  const now = new Date();
+  const diff = targetDate.getTime() - now.getTime();
+
+  if (diff <= 0) {
+    return "00d 00h 00m 00s";
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${String(days).padStart(2, "0")}d ${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+}
+
 function Cerimonia() {
+  const [countdown, setCountdown] = useState("00d 00h 00m 00s");
+
+  useEffect(() => {
+    const targetDate = new Date(2026, 7, 23, 0, 0, 0);
+
+    const updateCountdown = () => {
+      setCountdown(formatCountdown(targetDate));
+    };
+
+    updateCountdown();
+    const intervalId = window.setInterval(updateCountdown, 1000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <section id="cerimonia" className="relative overflow-hidden bg-cream py-24 md:py-36">
       <div className="pointer-events-none absolute -right-24 top-0 hidden w-[480px] opacity-70 lg:block">
@@ -196,8 +227,8 @@ function Cerimonia() {
           </div>
           <div className="absolute -bottom-8 -left-4 w-60 rounded-sm border border-lavender/30 bg-cream p-6 shadow-[var(--shadow-editorial)] md:-left-10 md:w-72">
             <div className="text-eyebrow text-lavender-deep">Contagem</div>
-            <div className="mt-3 text-display text-3xl text-ink md:text-4xl">23.08.26</div>
-            <div className="mt-1 text-italic-serif text-muted-foreground">Reserve a data no calendário</div>
+            <div className="mt-3 text-display text-3xl text-ink md:text-4xl">{countdown}</div>
+            <div className="mt-1 text-italic-serif text-muted-foreground">Falta até 23 de agosto de 2026</div>
           </div>
         </div>
       </div>

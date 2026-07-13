@@ -38,6 +38,7 @@
   --color-cream: var(--cream);
   --color-ink: var(--ink);
 
+  /* altere aqui as fontes principais usadas no site */
   --font-display: "Cormorant Garamond", serif;
   --font-serif-italic: "Cormorant Garamond", serif;
   --font-sans: "Jost", sans-serif;
