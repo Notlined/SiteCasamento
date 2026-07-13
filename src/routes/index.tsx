@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import heroCouple from "@/assets/hero-couple.jpg";
 import lavenderSprig from "@/assets/lavender-sprig.jpg";
 import lavenderTexture from "@/assets/lavender-texture.jpg";
+import { submitRsvp } from "@/lib/supabase";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -307,12 +308,32 @@ function Presente() {
 function RSVP() {
   const [form, setForm] = useState({ nome: "", email: "", telefone: "", mensagem: "" });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.nome.trim() || !form.email.trim() || !form.telefone.trim()) return;
-    // Envio real será integrado depois; por enquanto apenas confirmamos localmente.
-    setSent(true);
+
+    setLoading(true);
+    setError(null);
+    try {
+      await submitRsvp({
+        nome: form.nome.trim(),
+        email: form.email.trim(),
+        telefone: form.telefone.trim(),
+        mensagem: form.mensagem.trim() || null,
+      });
+      setSent(true);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      setError(
+        `Não conseguimos registrar sua confirmação agora. Erro: ${message}`,
+      );
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -388,11 +409,18 @@ function RSVP() {
               />
             </label>
 
+            {error && (
+              <p className="text-sm text-red-300" role="alert">
+                {error}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="mt-4 inline-flex items-center justify-center gap-3 rounded-full bg-cream px-8 py-4 text-eyebrow text-lavender-deep transition-all hover:shadow-[var(--shadow-glow)]"
+              disabled={loading}
+              className="mt-4 inline-flex items-center justify-center gap-3 rounded-full bg-cream px-8 py-4 text-eyebrow text-lavender-deep transition-all hover:shadow-[var(--shadow-glow)] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Confirmar presença →
+              {loading ? "Enviando..." : "Confirmar presença →"}
             </button>
           </form>
         )}
