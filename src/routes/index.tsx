@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
 
 /* -------- Editable content (troque aqui as fotos e o PIX) -------- */
 const HERO_IMAGE = heroCouple; // troque por outra importação para mudar a foto de fundo
-const PIX_KEY = "denilton.emilly@exemplo.com"; // substituir pela chave PIX real
+const PIX_KEY = "deniltonsilvarmk@gmail.com"; // substituir pela chave PIX real
 const QR_CODE_URL = ""; // cole aqui a URL da imagem do QR Code quando disponível
 /* ---------------------------------------------------------------- */
 
@@ -19,8 +19,8 @@ function Monogram({ className = "" }: { className?: string }) {
   return (
     <div className={`inline-flex items-center justify-center ${className}`}>
       <svg viewBox="0 0 60 60" className="h-full w-full" aria-hidden>
-        <circle cx="30" cy="30" r="28" fill="none" stroke="currentColor" strokeWidth="0.6" />
-        <circle cx="30" cy="30" r="22" fill="none" stroke="currentColor" strokeWidth="0.3" />
+        <circle cx="30" cy="30" r="28" fill="none" stroke="currentColor" strokeWidth="1.2" />
+        <circle cx="30" cy="30" r="22" fill="none" stroke="currentColor" strokeWidth="0.8" />
         <text x="30" y="37" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontSize="18" fontStyle="italic" fill="currentColor">D&amp;E</text>
       </svg>
     </div>
@@ -39,10 +39,10 @@ function Nav() {
   return (
     <nav className="absolute inset-x-0 top-0 z-30">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 md:px-12 md:py-8">
-        <div className="flex items-center gap-3 text-cream">
-          <Monogram className="h-10 w-10" />
-          <div className="hidden flex-col leading-tight sm:flex">
-            <span className="text-eyebrow text-cream/80">Save the date</span>
+        <div className="flex items-center gap-3 text-cream font-semibold transition-colors hover:text-cream/80">
+          <Monogram className="h-10 w-15 font-medium" />
+          <div className="hidden flex-col font-semibold leading-tight sm:flex">
+            <span className="text-eyebrow font-medium text-cream/80">Save the date</span>
             <span className="text-italic-serif text-sm text-cream/80">23 · 08 · 2026</span>
           </div>
         </div>
@@ -62,10 +62,10 @@ function Nav() {
         </ul>
         <a
           href="#rsvp"
-          className="group inline-flex items-center gap-2 rounded-full border border-cream/60 px-5 py-2.5 text-eyebrow text-cream transition-all hover:border-cream hover:bg-cream hover:text-lavender-deep"
+          className="group inline-flex items-center gap-3 rounded-full border border-cream/120 px-5 py-3 text-eyebrow text-cream transition-all hover:border-cream hover:bg-cream hover:text-lavender-deep font-medium"
         >
           Confirmar
-          <span className="transition-transform group-hover:translate-x-0.5">→</span>
+          <span className="transition-transform font-medium group-hover:translate-x-0.5">→</span>
         </a>
       </div>
     </nav>
@@ -92,36 +92,36 @@ function Hero() {
         <div className="max-w-2xl">
           <div className="mb-8 flex items-center gap-4 text-cream">
             <Sparkle className="h-3 w-3" />
-            <span className="text-eyebrow">Convite · Pacajus / CE</span>
+            <span className="text-eyebrow font-semibold text-lg">Convite</span>
           </div>
 
           <h1 className="text-display text-6xl leading-[0.92] text-cream sm:text-7xl md:text-[8rem]">
             Denilton
-            <span className="block text-italic-serif text-lavender-soft">&amp; Emilly</span>
+            <span className="block text-italic-serif text-lavender">&amp; Emilly</span>
           </h1>
 
-          <p className="mt-8 max-w-md text-base leading-relaxed text-cream/85 md:text-lg">
-            Com o coração cheio, convidamos você para celebrar o dia em que os nossos caminhos se tornam um só.
+          <p className="mt-8 max-w-md font-medium text-base leading-relaxed text-cream/85 md:text-lg">
+            Para que todos vejam, e saibam, e considerem, e juntamente entendam que a mão do Senhor fez isso... isaías 41:20.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#rsvp"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-cream px-8 py-4 text-eyebrow text-lavender-deep transition-all hover:shadow-[var(--shadow-glow)]"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-cream px-8 py-4 font-semibold text-eyebrow text-lavender-deep transition-all hover:shadow-[var(--shadow-glow)]"
             >
               Aceitar convite
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#cerimonia"
-              className="inline-flex items-center gap-3 rounded-full border border-cream/40 px-8 py-4 text-eyebrow text-cream transition-colors hover:border-cream"
+              className="inline-flex items-center gap-3 rounded-full border border-cream/120 px-8 py-4 font-semibold text-eyebrow text-cream transition-colors hover:border-cream"
             >
               Ver detalhes
             </a>
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-cream/25 pt-8 md:grid-cols-4 md:gap-10">
+        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-cream/80 pt-8 md:grid-cols-4 md:gap-10">
           {[
             { k: "Data", v: "23 · Ago · 26" },
             { k: "Horário", v: "15h30" },
@@ -129,8 +129,8 @@ function Hero() {
             { k: "Traje", v: "Esporte fino" },
           ].map((d) => (
             <div key={d.k} className="min-w-0">
-              <div className="text-eyebrow text-cream/80">{d.k}</div>
-              <div className="mt-2 text-display text-2xl text-cream md:text-3xl">{d.v}</div>
+              <div className="text-eyebrow text-cream/80 font-medium">{d.k}</div>
+              <div className="mt-2 text-display text-2xl text-cream font-medium md:text-3xl">{d.v}</div>
             </div>
           ))}
         </div>
@@ -181,14 +181,14 @@ function Cerimonia() {
         <div className="lg:sticky lg:top-24 lg:h-fit">
           <div className="flex items-center gap-3 text-lavender-deep">
             <Sparkle className="h-3 w-3" />
-            <span className="text-eyebrow">Capítulo 01</span>
+            <span className="text-eyebrow"></span>
           </div>
           <h2 className="mt-6 text-display text-5xl leading-[0.95] text-ink md:text-6xl">
-            A cerimônia,
-            <span className="block text-italic-serif lavender-text">entre lavandas.</span>
+            Informações
+            <span className="block text-italic-serif lavender-text">Cerimônia</span>
           </h2>
           <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-            Uma tarde tranquila em Pacajus, cercada pelas pessoas que fizeram parte da nossa história. Chegue antes das 15h30 para não perder a entrada.
+            Uma tarde dedicada a festejar a união do casal diante de Deus, cercada por pessoas que gostáriamos que presenciasem tamanha benção em nossas vidas. Chegue com antecedência.
           </p>
 
           <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6">
@@ -206,9 +206,9 @@ function Cerimonia() {
           </dl>
 
           <div className="mt-10 rounded-sm border border-lavender/30 bg-lavender-soft/40 p-6">
-            <div className="text-eyebrow text-lavender-deep">Traje</div>
-            <p className="mt-3 text-italic-serif text-2xl text-ink">Esporte fino</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <div className="text-eyebrow text-lavender-deep font-semibold">Traje</div>
+            <p className="mt-3 text-italic-serif text-2xl text-ink font-medium">Esporte fino</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground font-medium">
               Pedimos, com carinho, que evitem o <strong className="text-ink">branco</strong> (reservado à noiva) e o
               <strong className="text-ink"> lavanda</strong> (cor das madrinhas).
             </p>
@@ -256,20 +256,20 @@ function Presente() {
         <div className="mx-auto max-w-xl text-center">
           <div className="inline-flex items-center gap-3 text-lavender-deep">
             <Sparkle className="h-3 w-3" />
-            <span className="text-eyebrow">Capítulo 02 · Presente</span>
+            <span className="text-eyebrow font-semibold">Presente</span>
           </div>
           <h2 className="mt-6 text-display text-5xl leading-[0.95] text-ink md:text-6xl">
-            A sua presença
-            <span className="block text-italic-serif lavender-text">já é o nosso presente.</span>
+            presenteie
+            <span className="block text-italic-serif lavender-text">abençoe os noivos</span>
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            Se desejar, pode nos abençoar por PIX — escaneie o QR Code ou copie a chave abaixo.
+             escaneie o QR Code ou copie a chave abaixo.
           </p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="flex flex-col items-center justify-center rounded-sm border border-lavender/30 bg-cream p-10 shadow-[var(--shadow-editorial)]">
-            <div className="text-eyebrow text-lavender-deep">QR Code</div>
+            <div className="text-eyebrow text-lavender-deep font-semibold">QR Code</div>
             <div className="mt-6 flex aspect-square w-56 items-center justify-center rounded-sm border border-dashed border-lavender/50 bg-lavender-soft/30">
               {QR_CODE_URL ? (
                 <img src={QR_CODE_URL} alt="QR Code PIX Denilton e Emilly" className="h-full w-full object-contain p-3" />
@@ -280,7 +280,7 @@ function Presente() {
                 </div>
               )}
             </div>
-            <p className="mt-6 text-center text-italic-serif text-lg text-ink">Aponte a câmera do celular</p>
+            <p className="mt-6 text-center text-italic-serif font-semibold text-lg text-ink">Aponte a câmera do celular</p>
           </div>
 
           <div className="flex flex-col justify-center rounded-sm border border-lavender/30 bg-cream p-10 shadow-[var(--shadow-editorial)]">
@@ -296,7 +296,7 @@ function Presente() {
               {copied ? "Chave copiada ✓" : "Copiar chave PIX"}
             </button>
             <p className="mt-4 text-center text-italic-serif text-sm text-muted-foreground">
-              Chave a ser confirmada pelos noivos.
+              Agradecemos por nos ajudar a celebrar esse momento tão especial.
             </p>
           </div>
         </div>
@@ -371,7 +371,7 @@ function RSVP() {
                 value={form.nome}
                 onChange={(e) => setForm({ ...form, nome: e.target.value })}
                 className="mt-2 w-full rounded-sm border border-lavender-soft/30 bg-cream/5 px-5 py-3.5 text-sm text-cream placeholder:text-cream/40 backdrop-blur focus:border-lavender-soft focus:outline-none"
-                placeholder="Como você assinaria"
+                placeholder="Nome do(a) convidado(a)"
               />
             </label>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -383,7 +383,7 @@ function RSVP() {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="mt-2 w-full rounded-sm border border-lavender-soft/30 bg-cream/5 px-5 py-3.5 text-sm text-cream placeholder:text-cream/40 backdrop-blur focus:border-lavender-soft focus:outline-none"
-                  placeholder="voce@email.com"
+                  placeholder="@email.com"
                 />
               </label>
               <label className="block">
@@ -441,7 +441,7 @@ function Footer() {
           </div>
         </div>
         <p className="text-center text-italic-serif text-xl text-muted-foreground md:text-2xl">
-          "Entre lavandas, um sim."
+         
         </p>
         <div className="flex items-center justify-start gap-6 text-eyebrow text-muted-foreground md:justify-end">
           <a href="#convite" className="transition-colors hover:text-lavender-deep">Convite</a>
@@ -453,7 +453,7 @@ function Footer() {
         <div className="hairline" />
         <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-muted-foreground md:flex-row">
           <span>© 2026 · Feito com carinho para nossos convidados</span>
-          <span className="text-eyebrow">Pacajus / Ceará</span>
+          <span className="text-eyebrow">"O senhor é meu pastor e nada me faltará"</span>
         </div>
       </div>
     </footer>
