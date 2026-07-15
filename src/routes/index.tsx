@@ -4,6 +4,7 @@ import heroCouple from "@/assets/hero-couple.jpg";
 import lavenderSprig from "@/assets/lavender-sprig.jpg";
 import lavenderTexture from "@/assets/lavender-texture.jpg";
 import qrCode from "@/assets/qrcode.jpg";
+import { MapPin } from "lucide-react";
 import { submitRsvp } from "@/lib/supabase";
 
 export const Route = createFileRoute("/")({
@@ -14,6 +15,7 @@ export const Route = createFileRoute("/")({
 const HERO_IMAGE = heroCouple; // troque por outra importação para mudar a foto de fundo
 const PIX_KEY = "85 99149-5878"; // substituir pela chave PIX real
 const QR_CODE_URL = qrCode;
+const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/sGzz29CmY7312Vrq6"; // link do local no Google Maps
 /* ---------------------------------------------------------------- */
 
 function Monogram({ className = "" }: { className?: string }) {
@@ -41,7 +43,7 @@ function Nav() {
     <nav className="absolute inset-x-0 top-0 z-30">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 md:px-12 md:py-8">
         <div className="flex items-center gap-3 text-cream font-semibold transition-colors hover:text-cream/80">
-          <Monogram className="h-10 w-15 font-medium" />
+          <Monogram className="h-14 w-20 font-medium" />
           <div className="hidden flex-col font-semibold leading-tight sm:flex">
             <span className="text-eyebrow font-medium text-cream/80">Save the date</span>
             <span className="text-italic-serif text-sm text-cream/80">23 · 08 · 2026</span>
@@ -206,6 +208,16 @@ function Cerimonia() {
             ))}
           </dl>
 
+          <a
+            href={GOOGLE_MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-8 inline-flex items-center gap-3 rounded-full bg-lavender-deep px-8 py-4 font-semibold text-eyebrow text-cream transition-all hover:shadow-[var(--shadow-glow)]"
+          >
+            <MapPin className="h-5 w-5 transition-transform group-hover:scale-110" />
+            Ver localização no mapa
+          </a>
+
           <div className="mt-10 rounded-sm border border-lavender/30 bg-lavender-soft/40 p-6">
             <div className="text-eyebrow text-lavender-deep font-semibold">Traje</div>
             <p className="mt-3 text-italic-serif text-2xl text-ink font-medium">Esporte fino</p>
@@ -344,7 +356,7 @@ function RSVP() {
       </div>
 
       <div className="relative mx-auto max-w-2xl px-6 text-center md:px-12">
-        <Monogram className="mx-auto h-14 w-14 text-lavender-soft" />
+        <Monogram className="mx-auto h-20 w-20 text-lavender-soft" />
         <div className="mt-8 flex items-center justify-center gap-3 text-lavender-soft">
           <div className="h-px w-10 bg-lavender-soft/50" />
           <span className="text-eyebrow">Confirme sua presença</span>
@@ -435,7 +447,7 @@ function Footer() {
     <footer className="relative border-t border-lavender/20 bg-cream py-14">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-8 px-6 md:grid-cols-3 md:px-12">
         <div className="flex items-center gap-3 text-lavender-deep">
-          <Monogram className="h-12 w-12" />
+          <Monogram className="h-16 w-16" />
           <div>
             <div className="text-display text-2xl text-ink">Denilton &amp; Emilly</div>
             <div className="text-italic-serif text-sm text-muted-foreground">23 · Agosto · 2026</div>
